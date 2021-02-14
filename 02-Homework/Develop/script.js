@@ -1,5 +1,6 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
+generateBtn.addEventListener("click", writePassword);
 
 // Arrays 
 var numbers = ["0","1","2","3","4","5","6","7","8","9"];
@@ -15,15 +16,15 @@ var confirmLowerCase;
 
 
 function generatePassword() {
-  confirmLength = (prompt("How long would you like your password to be?"));
-}
+  var confirmLength = (prompt("How long would you like your password to be?"));
+
 
 while(confirmLength <=8 || confirmLength >= 128) {
   alert("Password must be between 8 and 128 characters");
   var confirmLength = (prompt("How long would you like your password to be?"));
 }
 
-alert("Your password will be " + confirmLength + " characters long!");
+  alert("Your password will be " + confirmLength + " characters long!");
 
 
 var confirmNumbers = confirm("Would you like numbers in your password?");
@@ -46,7 +47,7 @@ while(confirmNumbers === false && confirmSpecialCharacters === false && confirmU
   }
 
   if (confirmSpecialCharacters) {
-    passwordCharacters = passwordCharacters.concat(specialCharacters);
+    passwordCharacters = passwordCharacters.concat(specialCharacters)
   }
 
   if (confirmUpperCase) {
@@ -57,19 +58,39 @@ while(confirmNumbers === false && confirmSpecialCharacters === false && confirmU
     passwordCharacters = passwordCharacters.concat(lowerCase)
   }
 
-  
+  var randomPassword = ""
+      
+  for (var i = 0; i < confirmLength; i++) {
+    randomPassword = randomPassword + passwordCharacters[Math.floor(Math.random() * passwordCharacters.length)];
+    console.log(randomPassword)
+  }
+  return randomPassword;
+}
+
     
 
 
 
-// Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
 
-  passwordText.value = password;
 
-}
+  // Write password to the #password input
+  function writePassword() {
+    var password = generatePassword();
+    var passwordText = document.querySelector("#password");
+  
+    passwordText.value = password;
+  
+  }
 
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+    
+
+
+    
+
+
+    
+
+
+
+
+
