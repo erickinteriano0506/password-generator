@@ -29,9 +29,36 @@ alert("Your password will be " + confirmLength + " characters long!");
 var confirmNumbers = confirm("Would you like numbers in your password?");
 var confirmSpecialCharacters = confirm("Would you like special characters in your password?");
 var confirmUpperCase = confirm("Would you like upper case letter in your password?");
-var confirmLowerCase = confirm("Would you like lower case letters in your password?")
+var confirmLowerCase = confirm("Would you like lower case letters in your password?");
 
+while(confirmNumbers === false && confirmSpecialCharacters === false && confirmUpperCase === false && confirmLowerCase === false) {
+  alert("You must choose at least one of the criteria");
+  var confirmNumbers = confirm("Would you like numbers in your password?");
+  var confirmSpecialCharacters = confirm("Would you like special characters in your password?");
+  var confirmUpperCase = confirm("Would you like upper case letter in your password?");
+  var confirmLowerCase = confirm("Would you like lower case letters in your password?");
+}
 
+  var passwordCharacters = []
+
+  if (confirmNumbers) {
+    passwordCharacters = passwordCharacters.concat(numbers)
+  }
+
+  if (confirmSpecialCharacters) {
+    passwordCharacters = passwordCharacters.concat(specialCharacters);
+  }
+
+  if (confirmUpperCase) {
+    passwordCharacters = passwordCharacters.concat(upperCase)
+  }
+
+  if (confirmLowerCase) {
+    passwordCharacters = passwordCharacters.concat(lowerCase)
+  }
+
+  
+    
 
 
 
